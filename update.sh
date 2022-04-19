@@ -22,6 +22,12 @@ apt_update () {
 	sudo apt autoremove -y
 	return	
 }
+
+pacman_update () {
+	sudo pacman -Syu --noconfirm
+	sudo pacman -Sc
+	sudo pacman -R $(pacman -Qdtq)
+}	
   
 # Updates, upgrades and cleans flatpaks
 flatpak_update () {
@@ -55,7 +61,11 @@ updatePackages () {
 		if [ "$REPLY" = "y" ]; then
 			popRecovery_update
 		fi
+	
+	elif [ "$NAME" = "Arch Linux" ]; then
+		pacman_update
 	fi
+
 
 	# Updates flatpak if installed
 	if [ "$(which flatpak)" = /usr/bin/flatpak ]; then
