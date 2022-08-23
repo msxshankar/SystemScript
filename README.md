@@ -1,5 +1,5 @@
-# BashScript
-A collection of useful bash scripts.
+# SystemScript
+A collection of useful scripts for Linux computers.
 
 ## update.sh
 Updates system packages based on disto and package manager.
