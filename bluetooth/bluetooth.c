@@ -34,17 +34,20 @@ int main (int argc, char *argv[]) {
 	/* Evalues user input */
 	while (menu_ptr->condition) { 
 		switch ((*menu_ptr).menuInput) {
-
+			
+			/* Pair existing device */
 			case 1:
 				menu.condition = 0;
 				printf("%i", countLines(file_ptr));
 				break;
-
+			
+			/* Pair new device */
 			case 2:
 				menu.condition = 0;
 				newDevice();
 				break;
-
+			
+			/* Exit */
 			case 3:
 				menu.condition = 0;
 				exit(0);
@@ -73,6 +76,9 @@ int countLines (struct File *file_ptr) {
 	file_ptr->size = file_ptr->lines / 2;
 	
 	existingDevice(file_ptr);
+
+	fclose(openfile);
+
 	return file_ptr->size;
 }
 
@@ -80,28 +86,42 @@ int countLines (struct File *file_ptr) {
 int existingDevice(struct File *file_ptr) {
 	FILE *readfile = fopen("devices.txt", "r");
 	
-	char (*deviceArray) [file_ptr->size] = malloc (sizeof (char[file_ptr->size][file_ptr->size]));
-
-	while(fgets(deviceArray, 250, openfile) != NULL) {
-		if (!(strlen(file_ptr->buffer) == 1)) {
-			file_ptr->lines++;
-		}
+	/* Allocating memory for devices */
+	char **deviceArray = malloc (file_ptr->lines * sizeof(char*));
+	for (int i = 0; i < file_ptr->lines; i++) {
+		deviceArray[i] = malloc (250 * sizeof(char));
+	}
+	
+	/* Writing devices to memory */
+	for (int k = 0; k < file_ptr->lines; k++) {
+			fgets(deviceArray[k], 250, readfile);
+	}
+	
+	/* Display devices from memory */
+	for (int l = 0; l < file_ptr->lines; l++) {
+			printf("%s", deviceArray[l]);
 	}
 
-	free(contarray)
-	contarray = NULL;
+	/* Creates a string to pass to system() */
+	char buf[500];
+	snprintf(buf, sizeof(buf), "bluetoothctl connect %s", deviceArray[3]);
 
-
-	/* Creates new child process */
+	/* Creates new child process to call system() */
 	if (fork() == 0) {
-		int status = system("bluetoothctl connect E8:EE:CC:1A:B9:53");
+		int status = system(buf);
 	}	
+
+	/* Freeing memory */
+	for (int freeCount = 0; freeCount < file_ptr->lines; freeCount++) {		
+		free(deviceArray[freeCount]);
+	}
+	free(deviceArray);
 
 	return 0;
 }
 
 int newDevice () {
-	FILE *fptr = fopen("devices.txt", "w");
+//	FILE *fptr = fopen("devices.txt", "w");
 
 	return 0;
 }
