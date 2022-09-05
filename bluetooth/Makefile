@@ -21,7 +21,7 @@ all: ${TARGETS}
 
 # Using static pattern rule and % wildcard which searches for target pattern
 # $< holds the prerequisite file and $@ holds the target name
-${TARGETS}: %: %.o
+${TARGETS}: %: %.o %.h
 	${CC} ${CFLAGS} $< -o $@
 	@echo "Static pattern rule compilation"
 	

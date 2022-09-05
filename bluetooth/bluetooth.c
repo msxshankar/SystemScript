@@ -38,7 +38,7 @@ int main (int argc, char *argv[]) {
 			/* Pair existing device */
 			case 1:
 				menu.condition = 0;
-				printf("%i", countLines(file_ptr));
+				countLines(file_ptr);
 				break;
 			
 			/* Pair new device */
@@ -51,7 +51,7 @@ int main (int argc, char *argv[]) {
 			case 3:
 				menu.condition = 0;
 				exit(0);
-
+			
 			default:
 				printf("Invalid input. Please try again [1-3] > ");
 				scanf("%i", &menu_ptr->menuInput);
@@ -67,6 +67,8 @@ int countLines (struct File *file_ptr) {
 	if (openfile == NULL) {
 		exit(badFileName);
 	}
+
+	/* Read in file */
 	while(fgets(file_ptr->buffer, 250, openfile) != NULL) {
 		if (!(strlen(file_ptr->buffer) == 1)) {
 			file_ptr->lines++;
@@ -98,13 +100,23 @@ int existingDevice(struct File *file_ptr) {
 	}
 	
 	/* Display devices from memory */
-	for (int l = 0; l < file_ptr->lines; l++) {
-			printf("%s", deviceArray[l]);
+
+	int menuNumber = 1;
+	printf("\nChoose device to connect to: \n");
+	for (int l = 0; l < file_ptr->lines; l+=2) {
+			printf("%i. %s", menuNumber, deviceArray[l]);
+			menuNumber++;
 	}
+	printf("Enter number [1-%i] > ", menuNumber-1);
+
+	int input;
+	scanf("%i", &input); 
 
 	/* Creates a string to pass to system() */
 	char buf[500];
-	snprintf(buf, sizeof(buf), "bluetoothctl connect %s", deviceArray[3]);
+	int index = ((input*2)-2)+1;
+
+	snprintf(buf, sizeof(buf), "bluetoothctl connect %s", deviceArray[index]);
 
 	/* Creates new child process to call system() */
 	if (fork() == 0) {
@@ -116,6 +128,8 @@ int existingDevice(struct File *file_ptr) {
 		free(deviceArray[freeCount]);
 	}
 	free(deviceArray);
+
+	fclose(readfile);
 
 	return 0;
 }

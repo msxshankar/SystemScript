@@ -4,6 +4,7 @@ int countLines();
 int existingDevice ();
 int newDevice ();
 
+/* Struct declarations */
 
 struct Menu {
 	int menuInput;
