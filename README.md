@@ -1,15 +1,72 @@
 # SystemScript
-A collection of useful scripts for Linux computers.
+A collection of useful scripts and programs for Linux computers.
+
+## Introduction
+When I first installed Linux, I was surprised at the amount of freedom I was given to modify how my computer worked. 
+Along with the fact that my laptop wasn't well supported which prompted me to make custom scripts and programs. Hopefully, this repository will be usedful to you too! :)
+
+## bluetooth
+
+### Explaination
+A simple bluetooth program which runs in the terminal. Helps connect devices and spot issues that may not be visible in a GUI.
+
+### How to install and run
+
+Clone the repository and change directory to the bluetooth folder
+```
+   git clone https://github.com/msxshankar/SystemScript
+   cd SystemScript/bluetooth
+```
+
+Make the program and run it
+```
+   make
+   ./bluetooth
+```
+For now, the build system uses the Clang Compiler. GCC will be supported soon.
+
+## power
+
+### Explaination
+Sets powermodes and tdp settings for the Lenovo Ideapad 14ARE05 laptop. Hopefully, I could expand this to other AMD laptops but for now I have only tested it on this device.
+
+### How to install and run
+
+Clone the repository and change directory to the power folder
+```
+   git clone https://github.com/msxshankar/SystemScript
+   cd SystemScript/power
+```
+
+Make script executable
+```
+   chmod 755 powermode.sh
+   chmod 755 tdp_adjust.sh
+```
+
+Run the script
+```
+   ./powermode.sh
+   ./tdp_adjust.sh
+```
+
+Move to bin folder for easy access using your path (Optional)
+```
+   mv powermode.sh tdp_adjust ~/.local/bin
+```
 
 ## update.sh
+
+### Explaination
 Updates system packages based on disto and package manager.
-For now, built for Pop!-OS as this is my daily driver, but will add support for other distos.
+Supports the apt and pacman package managers
 
-## How to use
+## How to install and run
 
-Clone repository:
+Clone repository and change directory to the updates folder
 ```
-git clone https://github.com/msxshankar/BashScript
+git clone https://github.com/msxshankar/SystemScript
+cd SystemScript/updates
 ```
 
 Set script to executable:
@@ -21,5 +78,8 @@ Run script:
 ```
 ./update.sh
 ```
-You can add this script to your bin directory so you can just type update.sh in the future!
-Feel free to rename this file from update.sh to update (The .sh extension is for clarity).
+
+Move to bin folder for easy access using your path (Optional)
+```
+   mv update.sh ~/.local/bin
+```
