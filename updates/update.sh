@@ -17,16 +17,16 @@ read -p "Enter selection [1-2] > "
 
 # Updates, upgrades and cleans pop os/ubuntu repos
 apt_update () {
-	sudo apt update
-	sudo apt upgrade -y
-	sudo apt autoremove -y
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get autoremove -y
 	return	
 }
 
 pacman_update () {
 	sudo pacman -Syu --noconfirm
 	sudo pacman -Sc
-	sudo pacman -R $(pacman -Qdtq)
+	sudo pacman -R "$(pacman -Qdtq)"
 }	
   
 # Updates, upgrades and cleans flatpaks
