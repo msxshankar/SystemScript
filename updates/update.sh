@@ -36,6 +36,11 @@ flatpak_update () {
 	return
 }
 
+# Updates and cleans nix pkgs
+nixpkg_update () {
+	nix-env -u
+}
+
 # Updates the pop-os recovery partition
 popRecovery_update () {
 	pop-upgrade recovery upgrade from-release
