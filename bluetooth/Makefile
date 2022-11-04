@@ -5,10 +5,10 @@ CC = clang
 CFLAGS = -g -Wall
 
 # Program
-TARGETS = bluetooth
-OBJECTS = bluetooth.o
-MODULES = bluetooth.c
-DEP = bluetooth.h
+TARGETS = bluetooth parse
+OBJECTS = bluetooth.o parse.o
+MODULES = bluetooth.c parse.c
+DEP = bluetooth.h parse.h
 
 # Directories
 BIN = bin
