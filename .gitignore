@@ -2,6 +2,6 @@
 *.o
 
 # Ignore binaries
-bluetooth
+#bluetooth
 
 *.swp
