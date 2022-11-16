@@ -4,4 +4,7 @@
 # Ignore binaries
 bluetooth
 
+# Ignore clion config
+.idea/
+
 *.swp
