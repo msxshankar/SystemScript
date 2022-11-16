@@ -33,23 +33,23 @@ int main (int argc, char *argv[]) {
 	
 	/* Evalues user input */
 	while (menu_ptr->condition) { 
-		switch ((*menu_ptr).menuInput) {
+		switch (menu_ptr->menuInput) {
 			
 			/* Pair existing device */
 			case 1:
-				menu.condition = 0;
+				menu_ptr->condition = 0;
 				countLines(file_ptr);
 				break;
 			
 			/* Pair new device */
 			case 2:
-				menu.condition = 0;
+				menu_ptr->condition = 0;
 				newDevice();
 				break;
 			
 			/* Exit */
 			case 3:
-				menu.condition = 0;
+				menu_ptr->condition = 0;
 				exit(0);
 			
 			default:
