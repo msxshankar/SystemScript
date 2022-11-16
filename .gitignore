@@ -2,7 +2,7 @@
 *.o
 
 # Ignore binaries
-bluetooth
+bluetooth/bluetooth
 
 # Ignore clion config
 .idea/
