@@ -36,6 +36,12 @@ flatpak_update () {
 	return
 }
 
+# Updates and cleans nix pkgs
+nixpkg_update () {
+  nix-channel --update -v
+	nix-env -u -v
+}
+
 # Updates the pop-os recovery partition
 popRecovery_update () {
 	pop-upgrade recovery upgrade from-release
@@ -71,8 +77,12 @@ updatePackages () {
 	if [ "$(which flatpak)" = /usr/bin/flatpak ]; then
 		flatpak_update
 	fi
-}
 
+  # Updates nixpkgs if nix binary is installed
+  if [ -f "$(which nix)" ]; then
+    nixpkg_update
+  fi
+}
 
 # Starts menu system
 condition=1
