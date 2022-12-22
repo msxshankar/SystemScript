@@ -70,14 +70,22 @@ while [[ "$VAR" == 1 ]]; do
 
 	# Validating user input
 	if [[ "$REPLY" =~ ^[1-4]$ ]]; then
+
+	  # Exits program
 		if [[ "$REPLY" == 4 ]]; then
 			echo "Exiting..."
 			exit 1
 		fi
 
+    # Configures laptop power mode
 		if [[ "$REPLY" == 1 ]];then
-			powermodeMenu	
-			
+			powermodeMenu
+
+		  if [[ $"REPLY" =~ ^[1-4]$ ]]; then
+		    if [[ $"REPLY" =~ 1 ]]; then
+          sudo modprobe acpi_call && echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
+        fi
+      fi
 		fi
 
 		if [[ "$REPLY" == 2 ]];then

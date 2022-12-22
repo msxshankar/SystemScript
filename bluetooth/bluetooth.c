@@ -11,27 +11,34 @@
 #define badFileName 2
 
 int main (int argc, char *argv[]) {
-	
-	/* Main menu print out */
-	printf("Connect your bluetooth devices\n");
-	printf("1. Pair existing device\n");
-	printf("2. Pair new device\n");
-	printf("3. Exit\n");
-	printf("Please enter your selection [1-3] > ");
-	
-	/* Struct assignment */
-	struct Menu menu = {.condition = 1};
-	struct Menu *menu_ptr = &menu;
 
-	struct File file = {.lines = 0};
-	struct File *file_ptr = &file;
-	
-	/* Takes in user input */
-	if (!(scanf("%i", &menu_ptr->menuInput))) {
-		exit(nonIntInput);
-	}
-	
-	/* Evalues user input */
+    /* Struct assignment */
+    struct Menu menu = {.condition = 1};
+    struct Menu *menu_ptr = &menu;
+
+    struct File file = {.lines = 0};
+    struct File *file_ptr = &file;
+
+    if (argc == 1) {
+        /* Main menu print out */
+        printf("Connect your bluetooth devices\n");
+        printf("1. Pair existing device\n");
+        printf("2. Pair new device\n");
+        printf("3. Exit\n");
+        printf("Please enter your selection [1-3] > ");
+
+        /* Takes in user input */
+        if (!(scanf("%i", &menu_ptr->menuInput))) {
+            exit(nonIntInput);
+        }
+    }
+
+    else {
+        char* endPtr;
+        menu_ptr->menuInput = strtol(argv[1], &endPtr, 10);
+    }
+
+    /* Evalues user input */
 	while (menu_ptr->condition) { 
 		switch (menu_ptr->menuInput) {
 			
