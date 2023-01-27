@@ -2,7 +2,7 @@
 
 install () {
   chmod 755 updates/update.sh
-  chmod 755 scripst/largefiles.sh
+  chmod 755 scripts/largefiles.sh
   chmod 755 power/powermode.sh
   chmod 755 power/tdp_adjust.sh
 
