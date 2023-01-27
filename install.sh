@@ -1,6 +1,11 @@
 #!/bin/bash
 
 install () {
+  chmod 755 updates/update.sh
+  chmod 755 scripst/largefiles.sh
+  chmod 755 power/powermode.sh
+  chmod 755 power/tdp_adjust.sh
+
   mv updates/update.sh ~/.local/bin
   mv scripts/largefiles.sh ~/.local/bin
   mv power/powermode.sh ~/.local/bin
@@ -12,5 +17,5 @@ compile () {
   mv bluetooth ~/.local/bin
 }
 
-compile
 install
+compile
