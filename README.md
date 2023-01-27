@@ -3,7 +3,16 @@ A collection of useful scripts and programs for Linux computers.
 
 ## Introduction
 When I first installed Linux, I was surprised at the amount of freedom I was given to modify how my computer worked. 
-Along with the fact that my laptop wasn't well supported which prompted me to make custom scripts and programs. Hopefully, this repository will be usedful to you too! :)
+Along with the fact that my laptop wasn't well supported which prompted me to make custom scripts and programs. Hopefully, this repository will be useful to you too! :)
+
+## General Install
+Clone the repository and run the install script. This will put all scripts in the ~/.local/bin folder.
+This will typically be in your path. If not, please add it using your .bashrc!
+```
+    git clone https://github.com/msxshankar/SystemScript
+    chmod 755 install.sh 
+    . install.sh
+```
 
 ## bluetooth
 

@@ -113,20 +113,23 @@ detect_packages () {
   echo "Detecting packages..."
 
   if [ -x "$(command -v nix)" ]; then
-    echo "Nix"
+    echo "1 Nix"
   fi
   if [ -x "$(command -v flatpak)" ]; then
-    echo "Flatpak"
+    echo "2 Flatpak"
   fi
   if [ -x "$(command -v pacman)" ]; then
-    echo "Pacman"
+    echo "3 Pacman"
   fi
   if [ -x "$(command -v dnf)" ]; then
-    echo "Dnf"
+    echo "4 Dnf"
   fi
   if [ -x "$(command -v apt)" ]; then
-    echo "Apt"
+    echo "5 Apt"
   fi
+
+  #read -p "Enter selection [1-2] > "
+
 }
 
 # Starts menu system
