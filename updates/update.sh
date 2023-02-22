@@ -27,6 +27,7 @@ apt_update () {
 # Uses nala instead of apt
 nala_update () {
   sudo nala upgrade -y
+  sudo nala autoremove -y
   return
 }
 
