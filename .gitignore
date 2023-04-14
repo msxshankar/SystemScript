@@ -8,3 +8,6 @@ bluetooth/bluetooth
 .idea/
 
 *.swp
+
+# Ignore target dir
+bluetooth-rs/target
