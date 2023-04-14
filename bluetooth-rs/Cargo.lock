@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "connect-bluetooth-devices-rs"
+name = "bluetooth-connect-rs"
 version = "0.1.0"
 dependencies = [
  "yaml-rust",

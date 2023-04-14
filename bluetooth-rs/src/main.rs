@@ -80,7 +80,7 @@ fn command_line_options(args: &str) {
 fn menu_input(input: usize) -> usize{
 
     if input == 1 {
-        bluetooth::connect_devices();
+        bluetooth::pair_existing();
     }
 
     //else if input ==2 {}
