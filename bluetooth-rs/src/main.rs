@@ -49,6 +49,25 @@ fn main() {
     }
 }
 
+/// Handles menu input
+fn menu_input(input: usize) -> usize{
+
+    if input == 1 {
+        bluetooth::pair_existing();
+    }
+
+    //else if input ==2 {}
+
+    if input == 3 {
+        process::exit(SUCCESS);
+    }
+
+    else {
+        println!("Invalid option - please try again > ");
+        return 1;
+    }
+}
+
 /// Parse command line arguments
 fn parse_arguments(args: &[String]) -> &str {
 
@@ -76,21 +95,3 @@ fn command_line_options(args: &str) {
     }
 }
 
-/// Handles menu input
-fn menu_input(input: usize) -> usize{
-
-    if input == 1 {
-        bluetooth::pair_existing();
-    }
-
-    //else if input ==2 {}
-
-    if input == 3 {
-        process::exit(SUCCESS);
-    }
-
-    else {
-        println!("Invalid option - please try again > ");
-        return 1;
-    }
-}
