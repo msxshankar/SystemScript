@@ -36,7 +36,7 @@ fn main() {
 fn user_input() {
 
     // Takes input
-    let mut input = String::new();
+    let mut input = String::default();
 
     io::stdin()
         .read_line(&mut input)

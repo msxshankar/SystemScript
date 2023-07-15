@@ -29,7 +29,7 @@ fn parse_file<'a>() -> &'a Yaml {
 /// Pair existing devices
 pub fn pair_existing() {
     let mut file = File::open("devices.yaml").expect("Unable to open file");
-    let mut contents = String::new();
+    let mut contents = String::default();
 
     file.read_to_string(&mut contents)
         .expect("Unable to read file to string");
