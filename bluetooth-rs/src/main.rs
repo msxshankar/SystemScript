@@ -11,7 +11,7 @@ const SUCCESS: i32 = 0;
 const FAILURE: i32 = 1;
 
 fn main() {
-    
+
     // Collect command line arguments into vector and parse
     let args: Vec<String> = env::args().collect();
     if args.len() != 1 {
@@ -29,6 +29,12 @@ fn main() {
     print!("Please enter your selection [1-3] > ");
     io::stdout().flush().unwrap();
 
+    user_input();
+}
+
+// Gets input from user
+fn user_input() {
+
     // Takes input
     let mut input = String::new();
 
@@ -37,16 +43,24 @@ fn main() {
         .expect("Failed to read input");
 
     // Convert to int
-    let input_int: usize = input
-        .trim()
-        .parse()
-        .expect("Unable to convert string to int");
+    let input_opt = input.trim().parse::<i32>();
+    let input_int = match input_opt {
+        Ok(input_int) => input_int,
+        Err(e) => {
+            println!("Invalid input, please try again or enter q to quit ({})",e);
+            return;
+        }
+    };
+
+    println!("{}", input_int);
 
     // Check result
+    /*
     let mut result = menu_input(input_int);
     while result != 1 {
         result = menu_input(input_int);
     }
+    */
 }
 
 /// Handles menu input
@@ -56,7 +70,10 @@ fn menu_input(input: usize) -> usize{
         bluetooth::pair_existing();
     }
 
-    //else if input ==2 {}
+    else if input ==2 {
+        println!("Work in progress!");
+        process::exit(SUCCESS);
+    }
 
     if input == 3 {
         process::exit(SUCCESS);
@@ -64,6 +81,8 @@ fn menu_input(input: usize) -> usize{
 
     else {
         println!("Invalid option - please try again > ");
+
+        user_input();
         return 1;
     }
 }
